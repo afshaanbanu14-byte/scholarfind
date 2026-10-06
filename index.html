@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarFind</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">🎓 ScholarFind</div>
+    <div class="low-data">⚡ Low Data</div>
+</header>
+
+
+<!-- ================= SCREEN 1 ================= -->
+
+<main id="screen1" class="screen active">
+
+    <section class="hero">
+
+        <div class="hero-icon">🎓</div>
+
+        <p class="eyebrow">
+            SCHOLARSHIP DISCOVERY
+        </p>
+
+        <h1>
+            Find a Scholarship<br>
+            You May Qualify For
+        </h1>
+
+        <p class="hero-text">
+            Enter a few details and discover scholarship
+            opportunities that may match your profile.
+        </p>
+
+    </section>
+
+
+    <!-- STUDENT PROFILE -->
+
+    <section class="form-card">
+
+        <h2>Student Profile</h2>
+
+        <p class="form-subtitle">
+            You can use Priya as the example from the problem
+            statement or enter details for any student.
+        </p>
+
+
+        <!-- NAME -->
+
+        <label for="studentName">
+            Student Name
+        </label>
+
+        <input
+            type="text"
+            id="studentName"
+            value="Priya"
+            placeholder="Enter student name"
+        >
+
+
+        <!-- AGE -->
+
+        <label for="age">
+            Age
+        </label>
+
+        <input
+            type="number"
+            id="age"
+            value="17"
+            min="5"
+            max="100"
+            placeholder="Enter age"
+        >
+
+
+        <!-- CLASS -->
+
+        <label for="classLevel">
+            Current Class
+        </label>
+
+        <select id="classLevel">
+
+            <option value="">
+                Select class
+            </option>
+
+            <option value="10">
+                Class 10
+            </option>
+
+            <option value="11">
+                Class 11
+            </option>
+
+            <option value="12" selected>
+                Class 12
+            </option>
+
+            <option value="college">
+                College / Diploma
+            </option>
+
+        </select>
+
+
+        <!-- FIRST GENERATION -->
+
+        <label for="firstGeneration">
+            First-generation learner?
+        </label>
+
+        <select id="firstGeneration">
+
+            <option value="yes" selected>
+                Yes
+            </option>
+
+            <option value="no">
+                No
+            </option>
+
+        </select>
+
+
+        <!-- STATE -->
+
+        <label for="state">
+            State
+        </label>
+
+        <select id="state">
+
+            <option value="">
+                Select state
+            </option>
+
+            <option value="tamilnadu">
+                Tamil Nadu
+            </option>
+
+            <option value="kerala">
+                Kerala
+            </option>
+
+            <option value="karnataka">
+                Karnataka
+            </option>
+
+            <option value="other">
+                Other
+            </option>
+
+        </select>
+
+
+        <!-- INCOME -->
+
+        <label for="income">
+            Annual Family Income
+        </label>
+
+        <select id="income">
+
+            <option value="">
+                Select income range
+            </option>
+
+            <option value="1">
+                Below ₹1 Lakh
+            </option>
+
+            <option value="2">
+                ₹1 – ₹2 Lakh
+            </option>
+
+            <option value="3">
+                ₹2 – ₹3 Lakh
+            </option>
+
+            <option value="4">
+                ₹3 – ₹5 Lakh
+            </option>
+
+            <option value="5">
+                Above ₹5 Lakh
+            </option>
+
+        </select>
+
+
+        <!-- CATEGORY -->
+
+        <label for="category">
+            Category
+        </label>
+
+        <select id="category">
+
+            <option value="">
+                Select category
+            </option>
+
+            <option value="general">
+                General
+            </option>
+
+            <option value="obc">
+                OBC
+            </option>
+
+            <option value="sc">
+                SC
+            </option>
+
+            <option value="st">
+                ST
+            </option>
+
+            <option value="minority">
+                Minority
+            </option>
+
+        </select>
+
+
+        <!-- MARKS -->
+
+        <label for="marks">
+            Last Exam Percentage
+        </label>
+
+        <input
+            type="number"
+            id="marks"
+            min="0"
+            max="100"
+            placeholder="Example: 78"
+        >
+
+
+        <button
+            class="primary-btn"
+            onclick="findScholarships()">
+
+            Find My Scholarships →
+
+        </button>
+
+
+        <p class="privacy-note">
+            🔒 No login required · No personal data stored
+        </p>
+
+    </section>
+
+</main>
+
+
+
+<!-- ================= SCREEN 2 ================= -->
+
+<main id="screen2" class="screen">
+
+    <section class="results-header">
+
+        <button
+            class="back-btn"
+            onclick="showScreen(1)">
+
+            ← Back
+
+        </button>
+
+        <p class="eyebrow">
+            SCHOLARSHIP RESULTS
+        </p>
+
+        <h1 id="resultTitle">
+            Scholarships You May Qualify For
+        </h1>
+
+        <p
+            id="resultDescription"
+            class="results-description">
+        </p>
+
+    </section>
+
+
+    <div class="match-summary">
+
+        <div
+            class="match-number"
+            id="matchCount">
+            0
+        </div>
+
+        <div>
+
+            <strong>
+                Potential Matches
+            </strong>
+
+            <p>
+                Based on the student profile.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <section
+        id="scholarshipList"
+        class="scholarship-list">
+
+    </section>
+
+
+    <div class="info-note">
+
+        <strong>
+            ⚠️ Important
+        </strong>
+
+        <p>
+            These are potential matches. Final eligibility,
+            deadlines and requirements must be verified
+            on the official scholarship portal.
+        </p>
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= SCREEN 3 ================= -->
+
+<main id="screen3" class="screen">
+
+    <section class="details-header">
+
+        <button
+            class="back-btn"
+            onclick="showScreen(2)">
+
+            ← Back to Results
+
+        </button>
+
+    </section>
+
+
+    <section
+        id="scholarshipDetails"
+        class="details-card">
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    <strong>
+        ScholarFind
+    </strong>
+
+    <p>
+        Making scholarship discovery simpler.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
